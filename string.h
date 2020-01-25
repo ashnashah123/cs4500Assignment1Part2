@@ -4,6 +4,8 @@
 * This class represents a String. 
 * It contains a method to add characters, grow the string, 
 * and to concat strings together.
+*
+*  author: shah.ash@husky.neu.edu | peters.ci@husky.neu.edu
 */
 class String : public Object {
 public: 
