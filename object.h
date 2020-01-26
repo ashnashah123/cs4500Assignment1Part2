@@ -1,22 +1,28 @@
-// lang::CwC
+//lang::CwC
+#pragma once
 
-/*
-*  author: shah.ash@husky.neu.edu | peters.ci@husky.neu.edu
-*/
+#include <cstdlib>
 
-// This class represents an Object
+/**
+ * Object: a template for any object implemented in the future.
+ *         All classes should be some level of subclasses of <Object>.
+ * 
+ * author: dermer.s@husky.neu.edu / dermer.s@northeastern.edu
+ **/
 class Object {
 public:
-    // This is the hash value of the object
-    size_t hash_;
-    
-    // Computes the hash value of the object
-    size_t hash();
-    // A helper for hash that recomputes the hash only if needed
-    virtual size_t hash_me_();
-    /*
-    * Checks object equality to the given object
-    * @arg other: the other object
-    */
-    virtual bool equals(Object *other);
+
+    Object() {}
+
+    // Method empty: definition up to the subclasses
+    virtual ~Object() {} //destructor
+
+    // Calculates the hash of this object
+    virtual size_t hash() {
+    }
+
+    // default equality calculation of an object, should be overrided
+    // by any subclasses that care (or overload hash_me_)
+    virtual bool equals(Object *other) {
+    }
 };
