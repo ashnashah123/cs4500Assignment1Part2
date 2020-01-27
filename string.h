@@ -1,3 +1,4 @@
+#pragma once
 // lang::CwC
 
 /*
@@ -9,11 +10,18 @@
 */
 class String : public Object {
 public: 
-    // This is the list which contains the characters of the string
-    char* val_; 
-    // This is the length of the string 
-    size_t size_;
-    
+    // default constructor
+    String() {}
+
+    // Constructor with const char* param
+    String(const char* c) {}
+
+    // constructor with char* param
+    String(char* c) {}
+
+    // destructor
+    ~String() {}
+
     /* Concatenates this String with the given String together and returns the new String
     * @arg s: the String to concatenate to this String
     */
@@ -27,4 +35,15 @@ public:
     /* Returns the length of this string. 
     */
     int length();
+
+    /*
+    * Computes the hash value for this String
+    */
+    size_t hash();
+
+    /*
+    * Checks equality between this string and a given object
+    * @arg other: the other object to check equality to
+    */
+    bool equals(Object* other);
 };

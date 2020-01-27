@@ -37,7 +37,7 @@ void test_concat_and_length() {
 
 // Tests for Integer class
 // Test to_string and get_value
-void test_to_string() {
+void test_to_string_integers() {
     Integer * i = new Integer(1);
     Integer * j = new Integer(3);
     Integer * k = new Integer(1);
@@ -45,10 +45,10 @@ void test_to_string() {
     t_true(val == 3);
 
     String * s = new String("1");
-    String * s = i->to_string();
+    String * new_string = i->to_string();
 
-    t_true(s->equals(i));
-    t_true(i->equals(s));
+    t_true(s->equals(new_string));
+    t_true(new_string->equals(s));
 
     t_true(i->equals(k));
     t_true(k->equals(i));
@@ -58,7 +58,7 @@ void test_to_string() {
 
 // Tests for Integer class
 // Test compare_to
-void test_compare_to() {
+void test_compare_to_integers() {
     Integer * i = new Integer(1);
     Integer * j = new Integer(3);
     Integer * k = new Integer(1);
@@ -75,7 +75,7 @@ void test_compare_to() {
 
 // Tests for Float class
 // Test to_string and get_value
-void test_to_string() {
+void test_to_string_floats() {
     Float * i = new Float(1.1);
     Float * j = new Float(3.1);
     Float * k = new Float(1.1);
@@ -83,10 +83,10 @@ void test_to_string() {
     t_true(val == 3.1);
 
     String * s = new String("1.1");
-    String * s = i->to_string();
+    String * new_string = i->to_string();
 
-    t_true(s->equals(i));
-    t_true(i->equals(s));
+    t_true(s->equals(new_string));
+    t_true(new_string->equals(s));
 
     t_true(i->equals(k));
     t_true(k->equals(i));
@@ -96,7 +96,7 @@ void test_to_string() {
 
 // Tests for Float class
 // Test compare_to
-void test_compare_to() {
+void test_compare_to_floats() {
     Float * i = new Float(1.1);
     Float * j = new Float(3.2);
     Float * k = new Float(1.1);
@@ -120,15 +120,15 @@ void test_array_add() {
 
     arr->add(s, 0);
     arr->add(t, 2);
-    arr->add(u, 1)
+    arr->add(u, 1);
 
-    String* first = arr->get(0);
+    Object* first = arr->get(0);
     t_true(first->equals(s));
     
-    String* third = arr->get(1);
-    t_true(third->equals(u));
+    Object* second = arr->get(1);
+    t_true(second->equals(u));
     
-    String* third = arr->get(2);
+    Object* third = arr->get(2);
     t_true(third->equals(t));
 
     OK("test add passed with strings");
@@ -143,15 +143,15 @@ void test_array_add_with_integers() {
 
     arr->add(s, 0);
     arr->add(t, 2);
-    arr->add(u, 1)
+    arr->add(u, 1);
 
-    Integer* first = arr->get(0);
+    Object* first = arr->get(0);
     t_true(first->equals(s));
     
-    Integer* second = arr->get(1);
+    Object* second = arr->get(1);
     t_true(second->equals(u));
     
-    Integer* third = arr->get(2);
+    Object* third = arr->get(2);
     t_true(third->equals(t));
 
     OK("test add with integers passed");
@@ -166,15 +166,15 @@ void test_array_add_with_floats() {
 
     arr->add(s, 0);
     arr->add(t, 2);
-    arr->add(u, 1)
+    arr->add(u, 1);
 
-    Float* first = arr->get(0);
+    Object* first = arr->get(0);
     t_true(first->equals(s));
     
-    Float* second = arr->get(1);
+    Object* second = arr->get(1);
     t_true(second->equals(u));
     
-    Float* third = arr->get(2);
+    Object* third = arr->get(2);
     t_true(third->equals(t));
 
     OK("test add with floats passed");
@@ -189,15 +189,15 @@ void test_array_add_with_Bools() {
 
     arr->add(s, 0);
     arr->add(t, 2);
-    arr->add(u, 1)
+    arr->add(u, 1);
 
-    Bool* first = arr->get(0);
+    Object* first = arr->get(0);
     t_true(first->equals(s));
     
-    Bool* second = arr->get(1);
+    Object* second = arr->get(1);
     t_true(second->equals(u));
     
-    Bool* third = arr->get(2);
+    Object* third = arr->get(2);
     t_true(third->equals(t));
 
     OK("test add with bools passed");
@@ -215,13 +215,13 @@ void test_array_append() {
     arr->append(t);
     arr->append(u);
 
-    String* first = arr->get(0);
+    Object* first = arr->get(0);
     t_true(first->equals(s));
 
-    String* second = arr->get(1);
+    Object* second = arr->get(1);
     t_true(second->equals(t));
 
-    String* third = arr->get(2);
+    Object* third = arr->get(2);
     t_true(third->equals(u));
 
     OK("test append passed");
@@ -243,7 +243,6 @@ void test_array_add_all() {
     String * a = new String("ashna");
     String * b = new String("shah");
     String * c = new String("this");
-    Array* arr1 = new Array();
 
     arr2->append(a);
     arr2->append(b);
@@ -251,16 +250,16 @@ void test_array_add_all() {
 
     arr1->add_all(arr2, 1);
 
-    String* first = arr1->get(0);
+    Object* first = arr1->get(0);
     t_true(first->equals(s));
 
-    String* second = arr1->get(1);
+    Object* second = arr1->get(1);
     t_true(second->equals(a));
 
-    String* third = arr1->get(2);
+    Object* third = arr1->get(2);
     t_true(third->equals(b));
 
-    String* last = arr1->get(5);
+    Object* last = arr1->get(5);
     t_true(last->equals(u));
 }
 
@@ -276,9 +275,9 @@ void test_array_clear() {
     arr1->append(t);
     arr1->append(u);
 
-    arr->clear();
-    arr_length = arr1->length();
-    t_true(length->equals(0));
+    arr1->clear();
+    size_t arr_length = arr1->length();
+    t_true(arr_length == 0);
 }
 
 // Tests for Array class
@@ -315,12 +314,12 @@ void test_array_remove() {
   arr1->append(w);
   arr1->append(f);
 
-  t_true(arr1->size_ == 3);
+  t_true(arr1->length() == 3);
   arr1->remove(2);
-  t_true(arr1->size_ == 2);
+  t_true(arr1->length() == 2);
   arr1->remove(0);
-  t_true(arr1->size_ == 1);
-  String* element = arr1->get(0);
+  t_true(arr1->length() == 1);
+  Object* element = arr1->get(0);
   t_true(element->equals(w));
 
   OK("test remove passed");
@@ -341,9 +340,9 @@ void test_array_set() {
 
   arr1->set(1, new_string);
 
-  String* replaced = arr1->get(1);
+  Object* replaced = arr1->get(1);
   t_true(replaced->equals(new_string));
-  t_true(arr1->size_== 3);
+  t_true(arr1->length()== 3);
 
   OK("test set passed");
 }
@@ -428,8 +427,11 @@ void test_bool_to_string() {
     String* true_bool_string = true_boolean->to_string();
     String* false_bool_string = false_boolean->to_string();
 
-    t_true(true_bool_string->equals("true"));
-    t_true(false_bool_string->equals("true"));
+    Object* true_obj = new String("true");
+    Object* false_obj = new String("false");
+
+    t_true(true_bool_string->equals(true_obj));
+    t_true(false_bool_string->equals(false_obj));
 }
 
 // Tests for Bool class
@@ -456,7 +458,7 @@ void test_bool_compare_to() {
     int negative = false_boolean->compare_to(true_boolean);
 
     t_true(zero == 0);
-    t_true(postive > 0);
+    t_true(positive > 0);
     t_true(negative < 0);
 }
 
