@@ -1,3 +1,4 @@
+#pragma once
 #include "string.h"
 
 /*
@@ -9,9 +10,13 @@
 */
 class Bool : public Object{
 public:
-    // This is the value of this Bool
-    bool bool_;
-    
+
+    // constructor with bool param
+    Bool(bool b) {}
+
+    // Destructor
+    ~Bool() {}
+
     /* Returns a string representation of this Bool
     */
     String* to_string();
@@ -24,4 +29,15 @@ public:
     * @arg otherBool: the other bool to compare this bool to
     */
     int compare_to(Bool* otherBool);
+
+    /*
+    * Computes the hash value for this Bool
+    */
+    size_t hash();
+
+    /*
+    * Checks equality between this bool and a given object
+    * @arg other: the other object to check equality to
+    */
+    bool equals(Object* other);
 };

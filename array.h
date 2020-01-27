@@ -1,3 +1,4 @@
+#pragma once
 //lang::CwC
 
 #include "object.h"
@@ -12,12 +13,11 @@
 class Array : public Object{
 public:
 
-    // this is the list which contains the elements of the array
-    Object* list_;
-    // the size of memory allocated for this array
-    size_t size_;
-    // the number of elements in the array. 
-    size_t num_elements_;
+    // default constructor
+    Array() {}
+
+    // destructor
+    ~Array() {}
 
     /* adds an element to the list at the given index
     * @arg o: object to be added to this array
@@ -66,5 +66,16 @@ public:
     /* returns the number of elements in this array
     */
     size_t length();
+
+    /*
+    * Computes the hash value for this Array
+    */
+    size_t hash();
+
+    /*
+    * Checks equality between this array and a given object
+    * @arg other: the other object to check equality to
+    */
+    bool equals(Object* other);
 
 };
