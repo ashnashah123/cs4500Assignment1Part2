@@ -1,0 +1,29 @@
+README for Part 2:
+
+We decided to implement an API for an Array datastructure. We take inspiration for methods on our API
+from Java's ArrayList class. 
+
+# THOUGHT PROCESS FOR DESIGN
+We first looked at our implementations of StrList from Warmup 2. We realized that all the methods in
+the StrList class were specific to the String type we created. This would not be extensible for our new Array,
+which also needed to be extensible with Object. Therefore we changed the API method types to all
+deal with Object types.
+
+Then, we thought about future use of this API. Perhaps we would need to make arrays of other types such as
+booleans or floats or integers. After realizing that we wouldn't be able to use these primitive types
+with our Array API so far, we again took inspiration from Java's handling of primitive types. We
+created APIs / wrapper classes for these other types: Integer, Bool, and Float. Like String, they inherit from
+Object, so that we can use them in our Array API. They each have a field of their corresponding primitive
+type, and they have basic methods on them that we thought would be useful, such as to_string(), get_value(),
+and compare_to().
+
+# ARRAY API
+In terms of the Array API, the methods we decided to add were largely based on our Warmup2 as well as
+the methods outline in the Java ArrayList. Most of the methods we have are basic functions on Arrays, such
+as ways to add, remove and get elements from the Array.
+
+# TESTING
+We tested each API we created: String, Bool, Float, Integer, and Array. We tested the "primitive wrappers"
+individually to make sure their methods returned the correct values. We also tested Array with different types,
+making a Array that works with Strings, an Array that works with Integers, an Array that works with Floats,
+and an Array that works with Bools, etc.
