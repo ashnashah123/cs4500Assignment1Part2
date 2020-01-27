@@ -463,3 +463,28 @@ void test_bool_compare_to() {
 }
 
 
+int main() {
+    test_concat_and_length();
+    test_to_string_integers();
+    test_compare_to_integers();
+    test_to_string_floats();
+    test_compare_to_floats();
+    test_array_add();
+    test_array_add_with_integers();
+    test_array_add_with_floats();
+    test_array_add_with_Bools();
+    test_array_append();
+    test_array_add_all();
+    test_array_clear();
+    test_array_index_of();
+    test_array_remove();
+    test_array_set();
+    test_array_length();
+    test_array_equals();
+    test_array_hash();
+    test_bool_to_string();
+    test_bool_get_value();
+    test_bool_compare_to();
+    OK("SUCESS!\n");
+    return 0;
+}
