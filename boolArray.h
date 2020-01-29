@@ -47,7 +47,8 @@ public:
     */
     bool get(size_t index);
 
-    /* gets the index of the given object
+    /* gets the index of the given bool, returning the index of the first match.
+    * returns the size of the boolArray if the object cannot be found
     * @arg o: object to get the index of
     */
     size_t index_of(bool o);
