@@ -14,10 +14,10 @@ class FloatArray : public Object{
 public:
 
     // default constructor
-    Array() {}
+    FloatArray() {}
 
     // destructor
-    ~Array() {}
+    ~FloatArray() {}
 
     /* adds an element to the list at the given index
     * @arg o: object to be added to this array
@@ -77,7 +77,7 @@ public:
      * Checks object equality to the given object
      * @param other the object to compare to
      */
-    virtual bool equals(Object *other)
+    virtual bool equals(Object *other);
 
     /*
     * Checks equality between this array and a given object

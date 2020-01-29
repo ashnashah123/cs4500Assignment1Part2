@@ -6,6 +6,7 @@
 #include "intArray.h"
 #include "floatArray.h"
 #include "boolArray.h"
+#include "stringArray.h"
 
 /*
 *  author: shah.ash@husky.neu.edu | peters.ci@husky.neu.edu
@@ -27,14 +28,18 @@ void test_concat_and_length() {
     String *t = new String("World");
     String *u = s->concat(t);
     String *hw = new String("HelloWorld");
-    t_true(s->length() == 5);
-    t_true(t->length() == 5);
-    t_true(u->length() == 10);
+    t_true(s->size() == 5);
+    t_true(t->size() == 5);
+    t_true(u->size() == 10);
 
     t_true(s->equals(s));
     t_false(s->equals(t));
     t_false(s->equals(u));
     t_true(u->equals(hw));
+    delete(s);
+    delete(t);
+    delete(u);
+    delete(hw);
     OK("Test concat and length passed for string");
 }
 
@@ -57,6 +62,15 @@ void test_array_add() {
 
     Object *third = arr->get(2);
     t_true(third->equals(t));
+
+    delete(s);
+    delete(t);
+    delete(u);
+    delete(arr);
+
+    delete(first);
+    delete(second);
+    delete(third);
 
     OK("test add passed with strings");
 }
@@ -81,6 +95,8 @@ void test_array_add_with_integers() {
     int third = arr->get(2);
     t_true(third == t);
 
+    delete(arr);
+
     OK("test add with integers passed");
 }
 
@@ -103,6 +119,8 @@ void test_array_add_with_floats() {
 
     float third = arr->get(2);
     t_true(third == t);
+
+    delete(arr);
 
     OK("test add with floats passed");
 }
@@ -127,6 +145,8 @@ void test_array_add_with_Bools() {
     bool third = arr->get(2);
     t_true(third == t);
 
+    delete(arr);
+
     OK("test add with bools passed");
 }
 
@@ -150,6 +170,15 @@ void test_array_append() {
 
     Object *third = arr->get(2);
     t_true(third->equals(u));
+
+    delete(s);
+    delete(t);
+    delete(u);
+    delete(arr);
+
+    delete(first);
+    delete(second);
+    delete(third);
 
     OK("test append passed");
 }
@@ -188,6 +217,19 @@ void test_array_add_all() {
 
     Object *last = arr1->get(5);
     t_true(last->equals(u));
+
+    delete(s);
+    delete(t);
+    delete(u);
+    delete(arr1);
+    delete(arr2);
+
+    delete(first);
+    delete(second);
+    delete(third);
+    delete(last);
+
+    OK("test array add_all passed");
 }
 
 // Tests for Array class
@@ -205,6 +247,12 @@ void test_array_clear() {
     arr1->clear();
     size_t arr_length = arr1->length();
     t_true(arr_length == 0);
+
+    delete(s);
+    delete(t);
+    delete(u);
+    delete(arr1);
+    OK("test array clear passed");
 }
 
 // Tests for Array class
@@ -225,6 +273,13 @@ void test_array_index_of() {
     t_true(arr1->index_of(world) == 1);
     t_true(arr1->index_of(w) == 1);
     t_true(arr1->index_of(not_there) == 4);
+
+    delete(h);
+    delete(w);
+    delete(world);
+    delete(f);
+    delete(not_there);
+    delete(arr1);
 
     OK("test index of passed");
 }
@@ -249,6 +304,12 @@ void test_array_remove() {
     Object *element = arr1->get(0);
     t_true(element->equals(w));
 
+    delete(h);
+    delete(w);
+    delete(f);
+    delete(arr1);
+    delete(element);
+
     OK("test remove passed");
 }
 
@@ -271,6 +332,13 @@ void test_array_set() {
     t_true(replaced->equals(new_string));
     t_true(arr1->length() == 3);
 
+    delete(h);
+    delete(w);
+    delete(f);
+    delete(new_string);
+    delete(arr1);
+    delete(replaced);
+
     OK("test set passed");
 }
 
@@ -289,6 +357,11 @@ void test_array_length() {
     arr1->append(f);
 
     t_true(arr1->length() == 3);
+
+    delete(h);
+    delete(w);
+    delete(f);
+    delete(arr1);
 
     OK("test size passed");
 }
@@ -321,6 +394,14 @@ void test_array_equals() {
 
     t_true(arr1->equals(arr2));
 
+    delete(h);
+    delete(w);
+    delete(f);
+    delete(arr1);
+    delete(arr2);
+    delete(arr3);
+    delete(str_list4);
+
     OK("test equals passed");
 }
 
@@ -341,6 +422,11 @@ void test_array_hash() {
     size_t hash_after_pushing = arr1->hash();
 
     t_true(hash_val != hash_after_pushing);
+
+    delete(h);
+    delete(w);
+    delete(f);
+    delete(arr1);
 
     OK("hash test passed");
 }
