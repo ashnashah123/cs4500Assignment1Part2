@@ -1,29 +1,32 @@
 // lang:cwc
-#include "object.h" 
-#include "string.h" 
-#include "integer.h"
-#include "bool.h"
+#include "object.h"
+#include "string.h"
 #include "array.h"
-#include "float.h"
 #include <iostream>
+#include "intArray.h"
+#include "floatArray.h"
+#include "boolArray.h"
 
 /*
 *  author: shah.ash@husky.neu.edu | peters.ci@husky.neu.edu
 */
 
-void FAIL() {   exit(1);    }
-void OK(const char* m) { std::cout << m << '\n'; }
+void FAIL() { exit(1); }
+
+void OK(const char *m) { std::cout << m << '\n'; }
+
 void t_true(bool p) { if (!p) FAIL(); }
+
 void t_false(bool p) { if (p) FAIL(); }
- 
+
 
 // Tests for String class
 // Test concat
 void test_concat_and_length() {
-    String * s = new String("Hello");
-    String * t = new String("World");
-    String * u = s->concat(t);
-    String * hw = new String("HelloWorld");
+    String *s = new String("Hello");
+    String *t = new String("World");
+    String *u = s->concat(t);
+    String *hw = new String("HelloWorld");
     t_true(s->length() == 5);
     t_true(t->length() == 5);
     t_true(u->length() == 10);
@@ -35,100 +38,24 @@ void test_concat_and_length() {
     OK("Test concat and length passed for string");
 }
 
-// Tests for Integer class
-// Test to_string and get_value
-void test_to_string_integers() {
-    Integer * i = new Integer(1);
-    Integer * j = new Integer(3);
-    Integer * k = new Integer(1);
-    int val = j->get_value();
-    t_true(val == 3);
-
-    String * s = new String("1");
-    String * new_string = i->to_string();
-
-    t_true(s->equals(new_string));
-    t_true(new_string->equals(s));
-
-    t_true(i->equals(k));
-    t_true(k->equals(i));
-    t_false(i->equals(j));
-    OK("test to string for integer passed");
-}
-
-// Tests for Integer class
-// Test compare_to
-void test_compare_to_integers() {
-    Integer * i = new Integer(1);
-    Integer * j = new Integer(3);
-    Integer * k = new Integer(1);
-
-    int negative = i->compare_to(j);
-    int positive = j->compare_to(i);
-    int zero = i->compare_to(k);
-
-    t_true(negative < 0);
-    t_true(positive > 0);
-    t_true(zero == 0);
-    OK("test compare to for integer passed");
-}
-
-// Tests for Float class
-// Test to_string and get_value
-void test_to_string_floats() {
-    Float * i = new Float(1.1);
-    Float * j = new Float(3.1);
-    Float * k = new Float(1.1);
-    int val = j->get_value();
-    t_true(val == 3.1);
-
-    String * s = new String("1.1");
-    String * new_string = i->to_string();
-
-    t_true(s->equals(new_string));
-    t_true(new_string->equals(s));
-
-    t_true(i->equals(k));
-    t_true(k->equals(i));
-    t_false(i->equals(j));
-    OK("test to string for float passed");
-}
-
-// Tests for Float class
-// Test compare_to
-void test_compare_to_floats() {
-    Float * i = new Float(1.1);
-    Float * j = new Float(3.2);
-    Float * k = new Float(1.1);
-
-    int negative = i->compare_to(j);
-    int positive = j->compare_to(i);
-    int zero = i->compare_to(k);
-
-    t_true(negative < 0);
-    t_true(positive > 0);
-    t_true(zero == 0);
-    OK("test compare to for float passed");
-}
-
 // Test for an array of strings
 void test_array_add() {
-    String * s = new String("Hello");
-    String * t = new String("World");
-    String * u = new String("foo");
-    Array* arr = new Array();
+    String *s = new String("Hello");
+    String *t = new String("World");
+    String *u = new String("foo");
+    Array *arr = new Array();
 
     arr->add(s, 0);
     arr->add(t, 2);
     arr->add(u, 1);
 
-    Object* first = arr->get(0);
+    Object *first = arr->get(0);
     t_true(first->equals(s));
-    
-    Object* second = arr->get(1);
+
+    Object *second = arr->get(1);
     t_true(second->equals(u));
-    
-    Object* third = arr->get(2);
+
+    Object *third = arr->get(2);
     t_true(third->equals(t));
 
     OK("test add passed with strings");
@@ -136,69 +63,69 @@ void test_array_add() {
 
 // Test for an array of integers
 void test_array_add_with_integers() {
-    Integer * s = new Integer(1);
-    Integer * t = new Integer(2);
-    Integer * u = new Integer(3);
-    Array* arr = new Array();
+    int s = 1;
+    int t = 2;
+    int u = 3;
+    IntArray *arr = new IntArray();
 
     arr->add(s, 0);
     arr->add(t, 2);
     arr->add(u, 1);
 
-    Object* first = arr->get(0);
-    t_true(first->equals(s));
-    
-    Object* second = arr->get(1);
-    t_true(second->equals(u));
-    
-    Object* third = arr->get(2);
-    t_true(third->equals(t));
+    int first = arr->get(0);
+    t_true(first == s);
+
+    int second = arr->get(1);
+    t_true(second == u);
+
+    int third = arr->get(2);
+    t_true(third == t);
 
     OK("test add with integers passed");
 }
 
 // Test for an array of Floats
 void test_array_add_with_floats() {
-    Float * s = new Float(1);
-    Float * t = new Float(2);
-    Float * u = new Float(3);
-    Array* arr = new Array();
+    float s = 1;
+    float t = 2;
+    float u = 3;
+    FloatArray *arr = new FloatArray();
 
     arr->add(s, 0);
     arr->add(t, 2);
     arr->add(u, 1);
 
-    Object* first = arr->get(0);
-    t_true(first->equals(s));
-    
-    Object* second = arr->get(1);
-    t_true(second->equals(u));
-    
-    Object* third = arr->get(2);
-    t_true(third->equals(t));
+    float first = arr->get(0);
+    t_true(first == s);
+
+    float second = arr->get(1);
+    t_true(second == u);
+
+    float third = arr->get(2);
+    t_true(third == t);
 
     OK("test add with floats passed");
 }
 
 // Test for an array of bools
 void test_array_add_with_Bools() {
-    Bool * s = new Bool(1);
-    Bool * t = new Bool(2);
-    Bool * u = new Bool(3);
-    Array* arr = new Array();
+    bool s = true;
+    bool t = true;
+    bool u = false;
+    BoolArray *arr = new BoolArray();
 
     arr->add(s, 0);
     arr->add(t, 2);
     arr->add(u, 1);
 
-    Object* first = arr->get(0);
-    t_true(first->equals(s));
-    
-    Object* second = arr->get(1);
-    t_true(second->equals(u));
-    
-    Object* third = arr->get(2);
-    t_true(third->equals(t));
+    bool first = arr->get(0);
+    t_true(first == s);
+
+    bool second = arr->get(1);
+    t_true(second == u);
+
+    bool third = arr->get(2);
+    t_true(third == t);
 
     OK("test add with bools passed");
 }
@@ -206,22 +133,22 @@ void test_array_add_with_Bools() {
 // Tests for Array class
 // Test append
 void test_array_append() {
-    String * s = new String("Hello");
-    String * t = new String("World");
-    String * u = new String("foo");
-    Array* arr = new Array();
+    String *s = new String("Hello");
+    String *t = new String("World");
+    String *u = new String("foo");
+    Array *arr = new Array();
 
     arr->append(s);
     arr->append(t);
     arr->append(u);
 
-    Object* first = arr->get(0);
+    Object *first = arr->get(0);
     t_true(first->equals(s));
 
-    Object* second = arr->get(1);
+    Object *second = arr->get(1);
     t_true(second->equals(t));
 
-    Object* third = arr->get(2);
+    Object *third = arr->get(2);
     t_true(third->equals(u));
 
     OK("test append passed");
@@ -230,19 +157,19 @@ void test_array_append() {
 // Tests for Array class
 // Test add all
 void test_array_add_all() {
-    String * s = new String("Hello");
-    String * t = new String("World");
-    String * u = new String("foo");
-    Array* arr1 = new Array();
+    String *s = new String("Hello");
+    String *t = new String("World");
+    String *u = new String("foo");
+    Array *arr1 = new Array();
 
     arr1->append(s);
     arr1->append(t);
     arr1->append(u);
 
-    Array* arr2 = new Array();
-    String * a = new String("ashna");
-    String * b = new String("shah");
-    String * c = new String("this");
+    Array *arr2 = new Array();
+    String *a = new String("ashna");
+    String *b = new String("shah");
+    String *c = new String("this");
 
     arr2->append(a);
     arr2->append(b);
@@ -250,26 +177,26 @@ void test_array_add_all() {
 
     arr1->add_all(arr2, 1);
 
-    Object* first = arr1->get(0);
+    Object *first = arr1->get(0);
     t_true(first->equals(s));
 
-    Object* second = arr1->get(1);
+    Object *second = arr1->get(1);
     t_true(second->equals(a));
 
-    Object* third = arr1->get(2);
+    Object *third = arr1->get(2);
     t_true(third->equals(b));
 
-    Object* last = arr1->get(5);
+    Object *last = arr1->get(5);
     t_true(last->equals(u));
 }
 
 // Tests for Array class
 // Test clear
 void test_array_clear() {
-    String * s = new String("Hello");
-    String * t = new String("World");
-    String * u = new String("foo");
-    Array* arr1 = new Array();
+    String *s = new String("Hello");
+    String *t = new String("World");
+    String *u = new String("foo");
+    Array *arr1 = new Array();
 
     arr1->append(s);
     arr1->append(t);
@@ -283,192 +210,143 @@ void test_array_clear() {
 // Tests for Array class
 // Test index of
 void test_array_index_of() {
-  String * h = new String("Hello");
-  String * w = new String("World");
-  String * world = new String("World");
-  String * f = new String("foo");
-  String * not_there = new String("not there");
-  Array * arr1 = new Array();
+    String *h = new String("Hello");
+    String *w = new String("World");
+    String *world = new String("World");
+    String *f = new String("foo");
+    String *not_there = new String("not there");
+    Array *arr1 = new Array();
 
-  arr1->append(h);
-  arr1->append(w);
-  arr1->append(f);
+    arr1->append(h);
+    arr1->append(w);
+    arr1->append(f);
 
-  t_true(arr1->index_of(h) == 0);
-  t_true(arr1->index_of(world) == 1);
-  t_true(arr1->index_of(w) == 1);
-  t_true(arr1->index_of(not_there) == 4);
+    t_true(arr1->index_of(h) == 0);
+    t_true(arr1->index_of(world) == 1);
+    t_true(arr1->index_of(w) == 1);
+    t_true(arr1->index_of(not_there) == 4);
 
-  OK("test index of passed");
+    OK("test index of passed");
 }
 
 // Tests for Array class
 // Test remove
 void test_array_remove() {
-  String * h = new String("Hello");
-  String * w = new String("World");
-  String * f = new String("foo");
-  Array * arr1 = new Array();
+    String *h = new String("Hello");
+    String *w = new String("World");
+    String *f = new String("foo");
+    Array *arr1 = new Array();
 
-  arr1->append(h);
-  arr1->append(w);
-  arr1->append(f);
+    arr1->append(h);
+    arr1->append(w);
+    arr1->append(f);
 
-  t_true(arr1->length() == 3);
-  arr1->remove(2);
-  t_true(arr1->length() == 2);
-  arr1->remove(0);
-  t_true(arr1->length() == 1);
-  Object* element = arr1->get(0);
-  t_true(element->equals(w));
+    t_true(arr1->length() == 3);
+    arr1->remove(2);
+    t_true(arr1->length() == 2);
+    arr1->remove(0);
+    t_true(arr1->length() == 1);
+    Object *element = arr1->get(0);
+    t_true(element->equals(w));
 
-  OK("test remove passed");
+    OK("test remove passed");
 }
 
 // Tests for Array class
 // Test set
 void test_array_set() {
-  String * h = new String("Hello");
-  String * w = new String("World");
-  String * f = new String("foo");
-  String * new_string = new String("New!"); 
-  Array * arr1 = new Array();
+    String *h = new String("Hello");
+    String *w = new String("World");
+    String *f = new String("foo");
+    String *new_string = new String("New!");
+    Array *arr1 = new Array();
 
-  arr1->append(h);
-  arr1->append(w);
-  arr1->append(f);
+    arr1->append(h);
+    arr1->append(w);
+    arr1->append(f);
 
-  arr1->set(1, new_string);
+    arr1->set(1, new_string);
 
-  Object* replaced = arr1->get(1);
-  t_true(replaced->equals(new_string));
-  t_true(arr1->length()== 3);
+    Object *replaced = arr1->get(1);
+    t_true(replaced->equals(new_string));
+    t_true(arr1->length() == 3);
 
-  OK("test set passed");
+    OK("test set passed");
 }
 
 // Tests for Array class
 // Test length
 void test_array_length() {
-  String * h = new String("Hello");
-  String * w = new String("World");
-  String * f = new String("foo");
-  Array * arr1 = new Array();
+    String *h = new String("Hello");
+    String *w = new String("World");
+    String *f = new String("foo");
+    Array *arr1 = new Array();
 
-  t_true(arr1->length() == 0);
+    t_true(arr1->length() == 0);
 
-  arr1->append(h);
-  arr1->append(w);
-  arr1->append(f);
+    arr1->append(h);
+    arr1->append(w);
+    arr1->append(f);
 
-  t_true(arr1->length() == 3);
+    t_true(arr1->length() == 3);
 
-  OK("test size passed");
+    OK("test size passed");
 }
 
 // Tests for Array class
 // Test equals
 void test_array_equals() {
-  String * h = new String("Hello");
-  String * w = new String("World");
-  String * f = new String("foo");
-  Array * arr1 = new Array();
+    String *h = new String("Hello");
+    String *w = new String("World");
+    String *f = new String("foo");
+    Array *arr1 = new Array();
 
-  arr1->append(h);
-  arr1->append(w);
-  arr1->append(f);
+    arr1->append(h);
+    arr1->append(w);
+    arr1->append(f);
 
-  Array * arr2 = new Array();
+    Array *arr2 = new Array();
 
-  arr2->append(h);
-  arr2->append(w);
-  arr2->append(f);
+    arr2->append(h);
+    arr2->append(w);
+    arr2->append(f);
 
-  Array * arr3 = new Array();
-  arr3->append(h);
-  t_false(arr1->equals(arr3));
-  
-  Array * str_list4 = nullptr;
-  arr1->equals(str_list4);
-  t_false(arr1->equals(str_list4));
-  
-  t_true(arr1->equals(arr2));
+    Array *arr3 = new Array();
+    arr3->append(h);
+    t_false(arr1->equals(arr3));
 
-  OK("test equals passed");
+    Array *str_list4 = nullptr;
+    arr1->equals(str_list4);
+    t_false(arr1->equals(str_list4));
+
+    t_true(arr1->equals(arr2));
+
+    OK("test equals passed");
 }
 
 // Tests for Array class
 // Test hash
 void test_array_hash() {
-  String * h = new String("Hello");
-  String * w = new String("World");
-  String * f = new String("foo");
-  Array * arr1 = new Array();
+    String *h = new String("Hello");
+    String *w = new String("World");
+    String *f = new String("foo");
+    Array *arr1 = new Array();
 
-  arr1->append(h);
-  arr1->append(w);
-  arr1->append(f);
-  size_t hash_val = arr1->hash();
-  
-  arr1->append(f);
-  size_t hash_after_pushing = arr1->hash();
+    arr1->append(h);
+    arr1->append(w);
+    arr1->append(f);
+    size_t hash_val = arr1->hash();
 
-  t_true(hash_val != hash_after_pushing);
-  
-  OK("hash test passed");
+    arr1->append(f);
+    size_t hash_after_pushing = arr1->hash();
+
+    t_true(hash_val != hash_after_pushing);
+
+    OK("hash test passed");
 }
-
-// Tests for Bool class
-// Test to_string
-void test_bool_to_string() {
-    Bool* true_boolean = new Bool(true);
-    Bool* false_boolean = new Bool(false);
-
-    String* true_bool_string = true_boolean->to_string();
-    String* false_bool_string = false_boolean->to_string();
-
-    Object* true_obj = new String("true");
-    Object* false_obj = new String("false");
-
-    t_true(true_bool_string->equals(true_obj));
-    t_true(false_bool_string->equals(false_obj));
-}
-
-// Tests for Bool class
-// Test get_value
-void test_bool_get_value() {
-    Bool* true_boolean = new Bool(true);
-    Bool* false_boolean = new Bool(false);
-
-    bool true_bool = true_boolean->get_value();
-    bool false_bool = false_boolean->get_value();
-    
-    t_true(true_bool == true);
-    t_true(false_bool == false);
-}
-
-// Tests for Bool class
-// Test compare_to
-void test_bool_compare_to() {
-    Bool* true_boolean = new Bool(true);
-    Bool* false_boolean = new Bool(false);
-
-    int zero = true_boolean->compare_to(true_boolean);
-    int positive = true_boolean->compare_to(false_boolean);
-    int negative = false_boolean->compare_to(true_boolean);
-
-    t_true(zero == 0);
-    t_true(positive > 0);
-    t_true(negative < 0);
-}
-
 
 int main() {
     test_concat_and_length();
-    test_to_string_integers();
-    test_compare_to_integers();
-    test_to_string_floats();
-    test_compare_to_floats();
     test_array_add();
     test_array_add_with_integers();
     test_array_add_with_floats();
@@ -482,9 +360,6 @@ int main() {
     test_array_length();
     test_array_equals();
     test_array_hash();
-    test_bool_to_string();
-    test_bool_get_value();
-    test_bool_compare_to();
-    OK("SUCESS!\n");
+    OK("SUCCESS!\n");
     return 0;
 }
