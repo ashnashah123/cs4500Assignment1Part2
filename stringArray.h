@@ -77,6 +77,6 @@ public:
     * Checks equality between this array and a given string
     * @arg other: the other string to check equality to
     */
-    bool equals(String* other);
+    bool equals(Object* other);
 
 };

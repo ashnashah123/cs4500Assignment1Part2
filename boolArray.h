@@ -77,12 +77,6 @@ public:
      * Checks object equality to the given object
      * @param other the object to compare to
      */
-    virtual bool equals(Object *other);
-
-    /*
-    * Checks equality between this array and a given object
-    * @arg other: the other object to check equality to
-    */
-    bool equals(bool other);
+    bool equals(Object *other);
 
 };
