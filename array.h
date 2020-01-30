@@ -53,7 +53,7 @@ public:
     */
     size_t index_of(Object* o);
 
-    /* removes an element at the given index and returns it
+    /* Removes an element at the given index and returns it. Shrinks the array accordingly. 
     * @arg index: the index at which to remove the object
     */
     Object* remove(size_t index);
