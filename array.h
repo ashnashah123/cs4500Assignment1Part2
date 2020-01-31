@@ -49,7 +49,7 @@ public:
     Object* get(size_t index);
 
     /* gets the index of the given object, returning the index of the first match.
-    * returns the size of the Array if the object cannot be found
+    * returns (size of the Array + 1) if the object cannot be found
     * @arg o: object to get the index of
     */
     size_t index_of(Object* o);
