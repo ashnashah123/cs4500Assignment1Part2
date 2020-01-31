@@ -53,7 +53,7 @@ public:
     */
     size_t index_of(String* o);
 
-    /* removes an element at the given index and returns it
+    /* removes an element at the given index and returns it. Shifts elements left accordingly.
     * @arg index: the index at which to remove the string
     */
     String* remove(size_t index);
