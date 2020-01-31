@@ -53,7 +53,7 @@ public:
     */
     size_t index_of(float o);
 
-    /* removes an element at the given index and returns it
+    /* removes an element at the given index and returns it. Shifts elements left accordingly.
     * @arg index: the index at which to remove the object
     */
     float remove(size_t index);
