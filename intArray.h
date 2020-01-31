@@ -78,10 +78,4 @@ public:
      */
     virtual bool equals(Object *other);
 
-    /*
-    * Checks equality between this array and a given object
-    * @arg other: the other object to check equality to
-    */
-    bool equals(int other);
-
 };

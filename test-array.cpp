@@ -60,17 +60,13 @@ void test_array_add() {
     Object *second = arr->get(1);
     t_true(second->equals(u));
 
-    Object *third = arr->get(2);
+    Object *third = arr->get(3);
     t_true(third->equals(t));
 
     delete(s);
     delete(t);
     delete(u);
     delete(arr);
-
-    delete(first);
-    delete(second);
-    delete(third);
 
     OK("test add passed with strings");
 }
@@ -92,7 +88,7 @@ void test_array_add_with_integers() {
     int second = arr->get(1);
     t_true(second == u);
 
-    int third = arr->get(2);
+    int third = arr->get(3);
     t_true(third == t);
 
     delete(arr);
@@ -117,7 +113,7 @@ void test_array_add_with_floats() {
     float second = arr->get(1);
     t_true(second == u);
 
-    float third = arr->get(2);
+    float third = arr->get(3);
     t_true(third == t);
 
     delete(arr);
@@ -142,7 +138,7 @@ void test_array_add_with_Bools() {
     bool second = arr->get(1);
     t_true(second == u);
 
-    bool third = arr->get(2);
+    bool third = arr->get(3);
     t_true(third == t);
 
     delete(arr);
@@ -168,6 +164,7 @@ void test_array_append() {
     Object *second = arr->get(1);
     t_true(second->equals(t));
 
+//    The array is shifted over.
     Object *third = arr->get(2);
     t_true(third->equals(u));
 
@@ -175,10 +172,6 @@ void test_array_append() {
     delete(t);
     delete(u);
     delete(arr);
-
-    delete(first);
-    delete(second);
-    delete(third);
 
     OK("test append passed");
 }
@@ -221,13 +214,11 @@ void test_array_add_all() {
     delete(s);
     delete(t);
     delete(u);
+    delete(a);
+    delete(b);
+    delete(c);
     delete(arr1);
     delete(arr2);
-
-    delete(first);
-    delete(second);
-    delete(third);
-    delete(last);
 
     OK("test array add_all passed");
 }
@@ -308,12 +299,12 @@ void test_array_remove() {
     delete(w);
     delete(f);
     delete(arr1);
-    delete(element);
+//    delete(element);
 
     OK("test remove passed");
 }
 
-// Tests for Array class
+// Tests for Array classpy
 // Test set
 void test_array_set() {
     String *h = new String("Hello");
@@ -335,9 +326,8 @@ void test_array_set() {
     delete(h);
     delete(w);
     delete(f);
-    delete(new_string);
     delete(arr1);
-    delete(replaced);
+    delete(new_string);
 
     OK("test set passed");
 }

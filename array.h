@@ -20,6 +20,7 @@ public:
     ~Array() {}
 
     /* adds an element to the list at the given index
+    * shifts the element currently at the given index to the right
     * @arg o: object to be added to this array
     * @arg index: the index to add the object at 
     */
