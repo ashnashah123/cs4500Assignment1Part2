@@ -17,6 +17,10 @@ Object, so that we can use them in our Array API. They each have a field of thei
 type, and they have basic methods on them that we thought would be useful, such as to_string(), get_value(),
 and compare_to().
 
+After learning about the disadvantages of having wrapper classes, you will now see the creation of various array classes, 
+where each one is meant to represent an array of a different primitive type. We now have classes called IntArray, FloatArray, 
+and BoolArray. There is also a StringArray class which is used to represent arrays of strings. 
+
 # ARRAY API
 In terms of the Array API, the methods we decided to add were largely based on our Warmup2 as well as
 the methods outline in the Java ArrayList. Most of the methods we have are basic functions on Arrays, such
@@ -27,3 +31,5 @@ We tested each API we created: String, Bool, Float, Integer, and Array. We teste
 individually to make sure their methods returned the correct values. We also tested Array with different types,
 making a Array that works with Strings, an Array that works with Integers, an Array that works with Floats,
 and an Array that works with Bools, etc.
+
+Note: Documentation for all the methods is in the API specs. 
