@@ -48,7 +48,7 @@ public:
     String* get(size_t index);
 
     /* gets the index of the given object, returning the index of the first match.
-    * returns the size of the stringArray if the object cannot be found
+    * returns the (size + 1) of the stringArray if the object cannot be found
     * @arg o: string to get the index of
     */
     size_t index_of(String* o);

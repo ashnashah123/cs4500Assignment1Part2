@@ -47,7 +47,8 @@ public:
     */
     int get(size_t index);
 
-    /* gets the index of the given object
+    /* gets the index of the given int, returning the index of the first match.
+    * returns the (size + 1) of the intArray if the object cannot be found
     * @arg o: object to get the index of
     */
     size_t index_of(int o);

@@ -48,7 +48,7 @@ public:
     float get(size_t index);
 
     /* gets the index of the given float, returning the index of the first match.
-    * returns the size of the floatArray if the object cannot be found
+    * returns the (size + 1) of the floatArray if the object cannot be found
     * @arg o: object to get the index of
     */
     size_t index_of(float o);
